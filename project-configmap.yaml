@@ -1,7 +1,7 @@
 apiVersion: v1
 kind: ConfigMap
 metadata:
-  name: project-config
+  name: project-configmap
 data:
   server-port: "5000"
   check-interval: "30s"

@@ -4,7 +4,7 @@ metadata:
   name: database
 spec:
   serviceName: database
-  replicas: 1
+  replicas: 2
   selector:
     matchLabels:
       app: database
@@ -15,7 +15,7 @@ spec:
     spec:
       containers:
       - name: database
-        image: <database-image>
+        image: mysql:latest
         env:
         - name: DB_USERNAME
           valueFrom:
@@ -35,7 +35,7 @@ spec:
             memory: "2Gi"
             cpu: "1"
         ports:
-        - containerPort: <database-port>
+        - containerPort: 10640
   volumeClaimTemplates:
   - metadata:
       name: database-storage

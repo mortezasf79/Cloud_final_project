@@ -14,7 +14,12 @@ spec:
     spec:
       containers:
       - name: my-app
-        image: <app-image>
+        image: ftest1:1.0
+        ports:
+        - containerPort: 5000
+        envFrom:
+        - configMapRef:
+            name: project-configmap
         env:
         - name: SERVER_PORT
           valueFrom:
