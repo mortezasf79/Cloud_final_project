@@ -1,0 +1,6 @@
+Flask
+pymysql
+requests
+python-dotenv
+Jinja2
+MarkupSafe
