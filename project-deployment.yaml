@@ -1,0 +1,55 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: my-app
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: my-app
+  template:
+    metadata:
+      labels:
+        app: my-app
+    spec:
+      containers:
+      - name: my-app
+        image: <app-image>
+        env:
+        - name: SERVER_PORT
+          valueFrom:
+            configMapKeyRef:
+              name: project-config
+              key: server-port
+        - name: CHECK_INTERVAL
+          valueFrom:
+            configMapKeyRef:
+              name: project-config
+              key: check-interval
+        - name: CREATED_ADDRESSES
+          valueFrom:
+            configMapKeyRef:
+              name: project-config
+              key: created-addresses
+        - name: DATABASE_SERVER
+          valueFrom:
+            configMapKeyRef:
+              name: project-config
+              key: database-server
+        - name: DB_USERNAME
+          valueFrom:
+            secretKeyRef:
+              name: db-credentials
+              key: username
+        - name: DB_PASSWORD
+          valueFrom:
+            secretKeyRef:
+              name: db-credentials
+              key: password
+        resources:
+          requests:
+            memory: "512Mi"
+            cpu: "250m"
+          limits:
+            memory: "1Gi"
+            cpu: "500m"

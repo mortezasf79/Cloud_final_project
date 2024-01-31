@@ -8,7 +8,7 @@ RUN apk add --no-cache build-base
 COPY requirements.txt .
 
 # نصب وابستگی‌ها
-RUN pip install --user --no-cache-dir -r requirements.txt
+RUN pip install --no-cache-dir -r requirements.txt --user
 
 # مرحله دو - اجرای برنامه
 FROM python:3.9-alpine

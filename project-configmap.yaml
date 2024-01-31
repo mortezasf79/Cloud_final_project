@@ -1,0 +1,9 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: project-config
+data:
+  server-port: "5000"
+  check-interval: "30s"
+  created-addresses: "/path/to/created-addresses.txt"
+  database-server: "127.0.0.1"
