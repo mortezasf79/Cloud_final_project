@@ -14,43 +14,43 @@ spec:
     spec:
       containers:
       - name: my-app
-        image: ftest1:1.0
+        image: mortezasf/ftest1:1.0
         ports:
         - containerPort: 5000
         envFrom:
         - configMapRef:
-            name: project-configmap
+            name: configmap
         env:
         - name: SERVER_PORT
           valueFrom:
             configMapKeyRef:
-              name: project-config
+              name: configmap
               key: server-port
         - name: CHECK_INTERVAL
           valueFrom:
             configMapKeyRef:
-              name: project-config
+              name: configmap
               key: check-interval
         - name: CREATED_ADDRESSES
           valueFrom:
             configMapKeyRef:
-              name: project-config
+              name: configmap
               key: created-addresses
         - name: DATABASE_SERVER
           valueFrom:
             configMapKeyRef:
-              name: project-config
+              name: configmap
               key: database-server
-        - name: DB_USERNAME
+        - name: DB_USER
           valueFrom:
             secretKeyRef:
               name: db-credentials
-              key: username
+              key: DB_USER
         - name: DB_PASSWORD
           valueFrom:
             secretKeyRef:
               name: db-credentials
-              key: password
+              key: DB_PASSWORD
         resources:
           requests:
             memory: "512Mi"

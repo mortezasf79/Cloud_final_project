@@ -5,7 +5,7 @@ FROM python:3.9-alpine AS build
 RUN apk add --no-cache build-base
 
 # کپی کردن فایل‌های مورد نیاز
-COPY requirements.txt .
+COPY . .
 
 # نصب وابستگی‌ها
 RUN pip install --no-cache-dir -r requirements.txt --user
